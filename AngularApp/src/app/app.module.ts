@@ -13,7 +13,6 @@ import { PositionColor } from './main/content/postsitioncolor/positioncolor.dire
 import { AvatarPipe } from './main/content/pipe/avatar.pipe';
 import { PhoneDirective } from './main/content/phonecolor/phone.directive';
 
-
 @NgModule({
   declarations: [
     AppComponent,

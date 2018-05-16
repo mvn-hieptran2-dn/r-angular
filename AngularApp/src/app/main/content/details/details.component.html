@@ -2,15 +2,15 @@
   <h4 class="title-session">Info Detail</h4>
   <div class="info-detail">
     <img src="{{post.Avatar | pipe}}" alt="image-member">
-    <p class="name-member"><span class="title">Name: </span>{{post.Name}}</p>
-    <p class="employee-code"><span class="title">EmployeeCode: </span> {{post.EmployeeCode}}</p>
-    <p class="position" [positionColor]="post.Position" ><span class="title">Position: </span>{{post.Position}}</p>
-    <p class="employeetype"><span class="title">EmployeeType: </span> {{post.EmployeeType}}</p>
-    <p class="employeeemail"><span class="title">EmployeeEmail: </span> {{post.EmployeeEmail}}</p>
-    <p class="phone" [phone-directive]="post.Phone"><span class="title">Phone: </span> {{post.Phone}}</p>
+    <p class="name-member">Name: <span class="title">{{post.Name}}</span></p>
+    <p class="employee-code">EmployeeCode: <span class="title">{{post.EmployeeCode}}</span></p>
+    <p class="position">Position:<span class="title" [positionColor]="post.Position">{{post.Position}}</span></p>
+    <p class="employeetype">EmployeeType: <span class="title">{{post.EmployeeType}}</span></p>
+    <p class="employeeemail">EmployeeEmail: <span class="title">{{post.EmployeeEmail}}</span></p>
+    <p class="phone">Phone: <span class="title" [phone-directive]="post.Phone">{{post.Phone}}</span></p>
     <span class="list-product back-list"><a class="btn btn-detail" (click)="onBack()"> &#9668; Back To List</a></span>
   </div>
-  <product-list [posts]="listpost"></product-list>
+  <product-list [posts]="PostList"></product-list>
 </section>
 
 

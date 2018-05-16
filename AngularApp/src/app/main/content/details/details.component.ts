@@ -11,7 +11,6 @@ export class ProductDetailComponent {
   @Input() post: InfoMember;
   @Input() isShowDetail;
   @Input() PostList: InfoMember[];
-
   
   @Output() isShowList = new EventEmitter<boolean>();
 

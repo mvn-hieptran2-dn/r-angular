@@ -14,7 +14,6 @@ export class ListComponent {
   @Output() selectedPost = new EventEmitter<object>(); 
   
   constructor() {
-    this.posts = [];
   }
   
   onSelect(data) {

@@ -20,7 +20,7 @@ export class PageContentComponent {
     this.isShowDetail = true;
     
     this.listpost = this.articles.filter(item => item.Position === lst.Position && lst !== item);
-    console.log(this.listpost);
+    // console.log(this.listpost);
   }
 
   onBack() {
