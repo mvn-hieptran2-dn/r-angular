@@ -1,11 +1,15 @@
-<div  [hidden]="isShowDetail" class="content-post" *ngIf="posts">
-  <h4 class="title-session">List Post</h4>
+<div [hidden]="isShowDetail" class="content-post" *ngIf="posts">
+  <h4 class="title-session">List Team Member</h4>
   <ul class="list-product">
     <li *ngFor="let post of posts" class="item-product">
-      <p class="id-product">{{post.id}}</p> 
-      <h4 class="title-product">{{post.name}}</h4>
-      <span class="text-product">{{post.text}}</span>
-      <span class="link-product"><a class="btn-detail" [class.selected]="post === selectedPost" (click)="onSelect(post)"> Detail >></a></span>
+      <img src="{{post.Avatar | pipe}}" alt="image-member">
+      <p class="name-member"><span class="title">Name: </span>{{post.Name}}</p>
+      <p class="employee-code"><span class="title">EmployeeCode: </span> {{post.EmployeeCode}}</p>
+      <p class="position" [positionColor]="post.Position"><span class="title">Position: </span>{{post.Position}}</p>
+      <p class="employeetype"><span class="title">EmployeeType: </span> {{post.EmployeeType}}</p>
+      <p class="employeeemail"><span class="title">EmployeeEmail: </span> {{post.EmployeeEmail}}</p>
+      <p class="phone" [phone-directive]="post.Phone"><span class="title">Phone: </span> {{post.Phone}}</p>
+      <span class="link-product"><a class="btn-detail" [class.selected]="post === selectedPost" (click)="onSelect(post)"> Detail &#9658;</a></span>
     </li>
   </ul>
 </div>

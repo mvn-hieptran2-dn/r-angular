@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
  })
 
 export class HeaderComponent {
-  nameapp = 'header';
+  nameapp = 'My Team';
 }

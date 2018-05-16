@@ -1,2 +1,3 @@
 <product-list [posts]="articles" [isShowDetail]="isShowDetail" (selectedPost)="onSelect($event)"></product-list>
-<product-detail [post]="selectedPost"  [isShowDetail]="isShowDetail" (isShowList)="onBack($event)"></product-detail>
+<product-detail [PostList]="listpost" [post]="selectedPost"  [isShowDetail]="isShowDetail" (isShowList)="onBack()"></product-detail>
+

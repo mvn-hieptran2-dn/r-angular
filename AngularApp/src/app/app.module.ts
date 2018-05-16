@@ -8,7 +8,11 @@ import { PageContentComponent } from './main/content/content.component';
 import { SidebarComponent } from './main/sidebar/sidebar.component';
 import { MainComponent } from './main/main.component';
 import { ListComponent } from './main/content/list/list.component';
-import { ProductDetailComponent } from './main/content/details/details.component'
+import { ProductDetailComponent } from './main/content/details/details.component';
+import { PositionColor } from './main/content/postsitioncolor/positioncolor.directive';
+import { AvatarPipe } from './main/content/pipe/avatar.pipe';
+import { PhoneDirective } from './main/content/phonecolor/phone.directive';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +23,10 @@ import { ProductDetailComponent } from './main/content/details/details.component
     SidebarComponent,
     MainComponent,
     ListComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    PositionColor,
+    AvatarPipe,
+    PhoneDirective
   ],
   imports: [
     BrowserModule

@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { PageInit } from '../../../article'
+import { InfoMember } from '../../../listinfo'
 
 @Component({
   selector: 'product-detail',
@@ -8,9 +8,11 @@ import { PageInit } from '../../../article'
 })
 
 export class ProductDetailComponent {
-  @Input() post: PageInit;
+  @Input() post: InfoMember;
   @Input() isShowDetail;
+  @Input() PostList: InfoMember[];
 
+  
   @Output() isShowList = new EventEmitter<boolean>();
 
   onBack() {
