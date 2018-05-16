@@ -1,0 +1,8 @@
+<section [hidden]="isShowDetail === false" class="detail-product" *ngIf="post">
+  <h4 class="title-session">Product Detail</h4>
+  <h4 class="title-product">{{post.name}}</h4>
+  <span class="text-product">{{post.text}}</span>
+  <span class="list-product back-list"><a class="btn btn-detail" (click)="onBack(true)"> << Back To List</a></span>
+</section>
+
+
