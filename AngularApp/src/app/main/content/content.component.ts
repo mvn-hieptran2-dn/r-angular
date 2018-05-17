@@ -1,6 +1,5 @@
 import { Component, Output, Input, OnInit } from '@angular/core';
 import { InfoMember } from '../../listinfo';
-// import { posts } from '../../mock-listinfo';
 import { DemoService } from '../../../assets/getservice/getmember.service';
 
 @Component ({
@@ -17,9 +16,7 @@ export class PageContentComponent implements OnInit {
   member_list: InfoMember[];
   relatedEmployee: InfoMember[];
 
-  constructor(private memService: DemoService) {
-    
-  }
+  constructor(private memService: DemoService) {}
 
   ngOnInit() {
     this.memService.getList().subscribe(data => {
@@ -32,7 +29,6 @@ export class PageContentComponent implements OnInit {
     this.selectedPost = employee;
     this.isShowDetail = true;
     this.relatedEmployee = this.memService.getEmployeesSamePosition(this.articles, employee);
-    // this.relatedEmployee = this.employees_list.filter(emp => emp.position === employee.position && emp !== employee);
   }
 
   onSelect(lst : InfoMember): void {
