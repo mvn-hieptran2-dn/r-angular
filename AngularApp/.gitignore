@@ -40,3 +40,10 @@ Thumbs.db
 
 #ignore
 /node_modules
+/editorconfig
+/README.md
+/protractor.conf.js
+/app.e2e-spec.ts
+/app.po.ts
+/tsconfig.e2e.json
+/package.json
