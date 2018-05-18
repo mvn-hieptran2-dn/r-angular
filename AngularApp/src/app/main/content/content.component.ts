@@ -24,7 +24,6 @@ export class PageContentComponent implements OnInit {
     });
   }
 
-
   detailOfEmployee(employee: InfoMember): void {
     this.selectedPost = employee;
     this.isShowDetail = true;

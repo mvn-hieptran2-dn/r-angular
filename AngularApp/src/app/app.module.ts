@@ -27,7 +27,6 @@ import { PhoneDirective } from './main/content/phonecolor/phone.directive';
     PositionColor,
     AvatarPipe,
     PhoneDirective
-    
   ],
   imports: [
     BrowserModule,
