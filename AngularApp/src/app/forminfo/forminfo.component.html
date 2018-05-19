@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <form [formGroup]="userForm" (submit)="saveUser()">
+          <h2>Personal Infor</h2>
+          <label>Name: </label>
+          <input class="form-control" formControlName="name" type="text">
+          <label>Birthday: </label>
+          <input class="form-control" type="datetime">
+          <label>Gender:</label>
+          <input class="form-control" formControlName="gender" type="text">
+  
+          <h2>Company Info</h2>
+          <label>Email: </label>
+          <input class="form-control" formControlName="email" type="email">
+          <label>Code: </label>
+          <input class="form-control" formControlName="code" type="text">
+          <label>Team: </label>
+          <input class="form-control" formControlName="team" type="text">
+          <label>Skill: </label>
+          <input class="form-control" formControlName="skill" type="text">
+          <label>Citizen: </label>
+          <label>Viet Nam <input type="radio" name="citizen" id="" value="VN" checked></label> 
+          <label>Japan <input type="radio" name="citizen" id="" value="JP"></label> 
+          <input class="form-control hidden" type="text" name="jpcertificate" required placeholder="Nhap chung chi tieng nhat">
+          <input class="btn btn-success" [disabled]="!userForm.valid" type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+  </div>
