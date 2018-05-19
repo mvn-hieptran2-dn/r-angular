@@ -1,5 +1,9 @@
-<form #form ="ngForm" (ngSubmit)="onSubmit()">
-  <label>Email :</label> <input class="form-control" type="email" #mailForm="ngModel" required name="email" [(ngModel)]="email" [email]="true" [ngModelOptions]="{standalone : true}">
-  <label>Password: </label> <input class="form-control" type="password" #passForm="ngModel" required [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
+<form class="form-login" #form ="ngForm" (ngSubmit)="onSubmit()">
+  <div class="form-control" >
+    <label>Email :</label> <input class="email-form form-style" type="email" #mailForm="ngModel" required name="email" [(ngModel)]="email" [email]="true" [ngModelOptions]="{standalone : true}">
+  </div>
+  <div  class="form-control">
+    <label>Password: </label> <input class="pass-form form-style" type="password" #passForm="ngModel" required [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
+  </div>
   <input class="btn btn-submit" type="submit" value="Submit" [disabled]="passForm.invalid || mailForm.invalid">
 </form>

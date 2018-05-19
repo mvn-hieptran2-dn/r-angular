@@ -1,0 +1,29 @@
+.form-login {
+  padding: 200px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.form-control {
+  margin: 0 10px;
+}
+
+.form-control label {
+  padding-right: 5px;
+}
+
+.form-control .form-style {
+  border: 1px solid red;
+  height: 35px;
+  padding: 0 10px;  
+}
+
+input[type="submit"] {
+  height: 35px;
+  line-height: 35px;
+}
+
+.form-control .btn-submit:hover {
+  background-color: #eee;
+}
+
