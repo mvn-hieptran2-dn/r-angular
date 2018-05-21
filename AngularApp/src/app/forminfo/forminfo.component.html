@@ -39,9 +39,7 @@
       <input type="text" class="form-control" formControlName="certificate"> 
     </div>
     <input class="btn btn-success" type="submit" value="Submit" [disabled]="!FormModel.valid">
-    <div class="submitted-message" *ngIf="submittedForm">
-      <p>You've submitted your, {{ submittedForm.name }}!</p>
-    </div>
+    
   </form>
   </div>
   
