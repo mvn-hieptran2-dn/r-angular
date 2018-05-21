@@ -1,31 +1,47 @@
 <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <form [formGroup]="userForm" (submit)="saveUser()">
-          <h2>Personal Infor</h2>
-          <label>Name: </label>
-          <input class="form-control" formControlName="name" type="text">
-          <label>Birthday: </label>
-          <input class="form-control" type="datetime">
-          <label>Gender:</label>
-          <input class="form-control" formControlName="gender" type="text">
-  
-          <h2>Company Info</h2>
-          <label>Email: </label>
-          <input class="form-control" formControlName="email" type="email">
-          <label>Code: </label>
-          <input class="form-control" formControlName="code" type="text">
-          <label>Team: </label>
-          <input class="form-control" formControlName="team" type="text">
-          <label>Skill: </label>
-          <input class="form-control" formControlName="skill" type="text">
-          <label>Citizen: </label>
-          <label>Viet Nam <input type="radio" name="citizen" id="" value="VN" checked></label> 
-          <label>Japan <input type="radio" name="citizen" id="" value="JP"></label> 
-          <input class="form-control hidden" type="text" name="jpcertificate" required placeholder="Nhap chung chi tieng nhat">
-          <input class="btn btn-success" [disabled]="!userForm.valid" type="submit" value="Submit">
-        </form>
-      </div>
+  <form [formGroup]="FormModel" class="userForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Name: </label>
+      <input class="form-control" type="text" formControlName="name">
     </div>
+    <div class="form-group">
+      <label>Birthday: </label>
+      <input class="form-control" type="datetime">
+    </div>
+    <div class="form-group">
+      <label>Gender:</label>
+      <input type="radio" id="" value="Male" formControlName="gender"> Male
+      <input type="radio" id="" value="FeMale" formControlName="gender"> FeMale
+    </div>
+    <div class="form-group">
+      <label>Email: </label>
+      <input class="form-control" type="email" formControlName="email">
+    </div>
+    <div class="form-group">
+      <label>Code: </label>
+      <input class="form-control" type="text" formControlName="code">
+    </div>
+    <div class="form-group">
+      <label>Team: </label>
+      <input class="form-control" type="text" formControlName="team">
+    </div>
+    <div class="form-group">
+      <label>Skill: </label>
+      <input class="form-control" type="text" formControlName="skill">
+    </div>
+    <div class="form-group">
+      <label>Citizen: </label>
+      <input type="radio" name="citizen" id="" value="VN" checked> Viet Nam
+      <input type="radio" name="citizen" id="" value="JP"> JaPan
+    </div>
+    <div *ngIf="CertificateDiv" class="form-group">
+      <label>Certificate: </label>
+      <input type="text" class="form-control" formControlName="certificate"> 
+    </div>
+    <input class="btn btn-success" type="submit" value="Submit" [disabled]="!FormModel.valid">
+    <div class="submitted-message" *ngIf="submittedForm">
+      <p>You've submitted your, {{ submittedForm.name }}!</p>
+    </div>
+  </form>
   </div>
   
