@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
-import { FormGroup, FormControlName,  Validators, FormsModule, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControlName, Validators, FormBuilder } from '@angular/forms';
+import { ValidateCode, ValidateEmail } from '../validators/regexvalidator';
 
 @Component({
   selector: 'app-form-infor',
@@ -15,18 +16,11 @@ export class FormInforComponent  {
       name: ['', Validators.required],
       gender: ['', Validators.required],
       team: ['', Validators.required],
-      email: ['', [
-        Validators.required,
-        Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
-      ]],
-      code: ['', [
-        Validators.required,
-        // Validators.maxLength(6),
-        Validators.pattern("(AT)[0-9]{4}")
-      ]],
+      email: ['', [Validators.required, ValidateCode]],
+      code: ['', [Validators.required, ValidateCode]],
       skill: ['', Validators.required],
       citizen: ['', Validators.required],
-      certificate: ('')
+      certificate: [''],
     })
   }
 
