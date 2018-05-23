@@ -1,8 +1,9 @@
 <div class="container">
-  <form [formGroup]="FormModel" class="userForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="FormModel" class="forminfo" >
     <div class="form-group">
       <label>Name: </label>
       <input class="form-control" type="text" formControlName="name">
+      <span class="hide invalid" [ngClass]="{'show': name.invalid}">*</span>
     </div>
     <div class="form-group">
       <label>Birthday: </label>
@@ -10,36 +11,40 @@
     </div>
     <div class="form-group">
       <label>Gender:</label>
-      <input type="radio" id="" value="Male" formControlName="gender"> Male
-      <input type="radio" id="" value="FeMale" formControlName="gender"> FeMale
+      <input type="radio" name="gender" id="" value="Male" formControlName="gender"> Male
+      <input type="radio" name="gender" id="" value="FeMale" formControlName="gender"> FeMale
     </div>
     <div class="form-group">
       <label>Email: </label>
       <input class="form-control" type="email" formControlName="email">
+      <span class="hide invalid" [ngClass]="{'show': email.invalid}">*</span>
     </div>
     <div class="form-group">
       <label>Code: </label>
       <input class="form-control" type="text" formControlName="code">
+      <span class="hide invalid" [ngClass]="{'show': code.invalid}">*</span>
     </div>
     <div class="form-group">
       <label>Team: </label>
       <input class="form-control" type="text" formControlName="team">
+      <span class="hide invalid" [ngClass]="{'show': team.invalid}">*</span>
     </div>
     <div class="form-group">
       <label>Skill: </label>
       <input class="form-control" type="text" formControlName="skill">
+      <span class="hide invalid" [ngClass]="{'show': skill.invalid}">*</span>
     </div>
     <div class="form-group">
       <label>Citizen: </label>
-      <input type="radio" name="citizen" id="" value="VN" checked> Viet Nam
-      <input type="radio" name="citizen" id="" value="JP"> JaPan
+      Viet Nam:<input type="radio" name="country" value="VN" (change)="showCertificate('VN')">
+      Japan:<input type="radio" name="country" value="JP" (change)="showCertificate('JP')">
+      <div id="form-certificate">
+        <label>Japanese Certificate:</label>
+        <input class="form-control" formControlName="certificate" type="text" required>
+        <span class="invalid" [ngClass]="{'hide': certificate.valid}">*</span>
+      </div>
     </div>
-    <div *ngIf="CertificateDiv" class="form-group">
-      <label>Certificate: </label>
-      <input type="text" class="form-control" formControlName="certificate"> 
-    </div>
-    <input class="btn btn-success" type="submit" value="Submit" [disabled]="!FormModel.valid">
-    
+    <input [disabled]="!FormModel.valid" type="submit" value="Submit">
   </form>
-  </div>
+</div>
   

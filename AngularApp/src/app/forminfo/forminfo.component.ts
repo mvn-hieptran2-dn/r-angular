@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormGroup, FormControl,  Validators } from '@angular/forms';
+import { Component, Inject } from '@angular/core';
+import { FormGroup, FormControlName,  Validators, FormsModule, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-form-infor',
@@ -8,38 +8,60 @@ import { FormGroup, FormControl,  Validators } from '@angular/forms';
 })
 export class FormInforComponent  {
   FormModel: any;
-  CertificateDiv: boolean;
+  CertificateDiv: any;
 
-  constructor() {
-    this.FormModel = new FormGroup({
-      name: new FormControl('', Validators.required),
-      gender: new FormControl('', Validators.required),
-      team: new FormControl ('', Validators.required),
-      email: new FormControl('', [
+  constructor(@Inject(FormBuilder) fb: FormBuilder) {
+    this.FormModel = fb.group({
+      name: ['', Validators.required],
+      gender: ['', Validators.required],
+      team: ['', Validators.required],
+      email: ['', [
         Validators.required,
         Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
-      ]),
-      code: new FormControl('', [
+      ]],
+      code: ['', [
         Validators.required,
-        Validators.maxLength(6),
-        Validators.pattern("^(AT)[0-9]{4}$")
-      ]),
-      skill: new FormControl('', Validators.required),
-      citizen: new FormControl('', Validators.required),
-      certificate: new FormControl('', Validators.required),
+        // Validators.maxLength(6),
+        Validators.pattern("(AT)[0-9]{4}")
+      ]],
+      skill: ['', Validators.required],
+      citizen: ['', Validators.required],
+      certificate: ('')
     })
   }
 
-  showCertificate(event: any) {
-    this.CertificateDiv = event.srcElement && event.srcElement.value === '1';
+  showCertificate(event: string) {
+    this.CertificateDiv = (event === 'VN' ? true : false);
     if (this.CertificateDiv) {
-      this.FormModel.controls['certificate'].setValidators([Validators.required]);
-      this.FormModel.controls['certificate'].updateValueAndValidity()
+      this.FormModel.controls.certificate.setValidators([Validators.required]);
+      this.FormModel.controls.certificate.updateValueAndValidity();
+      document.getElementById('form-certificate').style.display = "block";
     } else {
-      this.FormModel.controls['certificate'].clearValidators()
-      this.FormModel.controls['certificate'].updateValueAndValidity()
+      this.FormModel.controls.certificate.clearValidators()
+      this.FormModel.controls.certificate.updateValueAndValidity();
+      document.getElementById('form-certificate').style.display = "none";
     }
   }
 
-  
+  get name() {
+    return this.FormModel.get('name');
+  }
+  get gender() {
+    return this.FormModel.get('gender');
+  }
+  get team() {
+    return this.FormModel.get('team');
+  }
+  get email() {
+    return this.FormModel.get('email');
+  }
+  get code() {
+    return this.FormModel.get('code');
+  }
+  get skill() {
+    return this.FormModel.get('skill');
+  }
+  get certificate() {
+    return this.FormModel.get('certificate');
+  }
 }

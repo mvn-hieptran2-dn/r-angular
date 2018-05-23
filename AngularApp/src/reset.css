@@ -203,11 +203,11 @@ input[type="submit"] {
 font-family: "Roboto", sans-serif;
 font-size: 14px;	
 text-transform: uppercase;		
-  color: #fff;
+  /* color: #fff; */
   background-image: none;
-  height: 50px;
-  background-color: #303030;
-  line-height: 50px;
+  height: 35px;
+  /* background-color: #303030; */
+  line-height: 35px;
   padding: 0 28px;
   cursor: pointer;
   letter-spacing: 0.5px;
@@ -323,7 +323,7 @@ background-image: none;
 
 textarea, 
 input[type="text"],
-input[type="submit"],
+/* input[type="submit"], */
 input[type="password"], 
 input[type="datetime"], 
 input[type="datetime-local"], 

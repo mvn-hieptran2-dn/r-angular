@@ -4,3 +4,22 @@
   margin: 0 auto;
   padding: 0 15px;
 }
+
+.forminfo {
+  padding: 50px 0;
+}
+
+.form-control {
+  height: 35px;
+  padding: 0 10px;
+  margin: 10px 0;
+}
+
+label {
+  margin-right: 10px;
+}
+
+.invalid {
+  color: #d51d1d;
+  font-size: 20px;
+}
