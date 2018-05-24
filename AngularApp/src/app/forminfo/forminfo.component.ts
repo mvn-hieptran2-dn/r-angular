@@ -1,22 +1,23 @@
-import { Component, Inject } from '@angular/core';
+import { Component} from '@angular/core';
 import { FormGroup, FormControlName, Validators, FormBuilder } from '@angular/forms';
-import { ValidateCode, ValidateEmail } from '../validators/regexvalidator';
+import { ValidateCode, ValidateEmail } from '../validators/allvalidator';
+import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-form-infor',
   templateUrl: './forminfo.component.html',
   styleUrls: ['./forminfo.component.css']
 })
-export class FormInforComponent  {
+export class FormInforComponent {
   FormModel: any;
   CertificateDiv: any;
 
-  constructor(@Inject(FormBuilder) fb: FormBuilder) {
-    this.FormModel = fb.group({
+  constructor(private fb: FormBuilder) {
+    this.FormModel = this.fb.group({
       name: ['', Validators.required],
       gender: ['', Validators.required],
       team: ['', Validators.required],
-      email: ['', [Validators.required, ValidateCode]],
+      email: ['', [Validators.required, ValidateEmail]],
       code: ['', [Validators.required, ValidateCode]],
       skill: ['', Validators.required],
       citizen: ['', Validators.required],
@@ -37,6 +38,14 @@ export class FormInforComponent  {
     }
   }
 
+  onSubmit() {
+    if(this.FormModel) {
+      if(this.FormModel.valid) {
+        alert('Login successfully');
+      }
+    }
+  }
+
   get name() {
     return this.FormModel.get('name');
   }
@@ -54,6 +63,9 @@ export class FormInforComponent  {
   }
   get skill() {
     return this.FormModel.get('skill');
+  }
+  get citizen() {
+    return this.FormModel.get('citizen');
   }
   get certificate() {
     return this.FormModel.get('certificate');

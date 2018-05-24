@@ -33,3 +33,7 @@ label {
 .show {
   display: inline-block;
 }
+
+.form-group #select-team {
+  width: 192px;
+}

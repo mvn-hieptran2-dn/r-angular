@@ -13,6 +13,7 @@
       <label>Gender:</label>
       <input type="radio" name="gender" id="" value="Male" formControlName="gender"> Male
       <input type="radio" name="gender" id="" value="FeMale" formControlName="gender"> FeMale
+      <span class="hide invalid" [ngClass]="{'show': gender.invalid}">*</span>
     </div>
     <div class="form-group">
       <label>Email: </label>
@@ -26,7 +27,15 @@
     </div>
     <div class="form-group">
       <label>Team: </label>
-      <input class="form-control" type="text" formControlName="team">
+      <select id="select-team" class="form-control" formControlName="team">
+        <option value="0"></option>
+        <option value="1">FE</option>
+        <option value="2">Ruby</option>
+        <option value="3">PHP</option>
+        <option value="4">QC</option>
+        <option value="5">Androi</option>
+        <option value="6">IOS</option>
+      </select>
       <span class="hide invalid" [ngClass]="{'show': team.invalid}">*</span>
     </div>
     <div class="form-group">
@@ -36,15 +45,16 @@
     </div>
     <div class="form-group">
       <label>Citizen: </label>
-      Viet Nam:<input type="radio" name="country" value="VN" (change)="showCertificate('VN')">
-      Japan:<input type="radio" name="country" value="JP" (change)="showCertificate('JP')">
-      <div id="form-certificate">
-        <label>Japanese Certificate:</label>
-        <input class="form-control" formControlName="certificate" type="text" required>
-        <span class="invalid" [ngClass]="{'hide': certificate.valid}">*</span>
-      </div>
+      Viet Nam:<input type="radio" name="citizen" value="VN" (change)="showCertificate('VN')" formControlName="citizen">
+      Japan:<input type="radio" name="citizen" value="JP" (change)="showCertificate('JP')" formControlName="citizen">
+      <span class="invalid" [ngClass]="{'hide': citizen.valid}">*</span>
     </div>
-    <input [disabled]="!FormModel.valid" type="submit" value="Submit">
+    <div id="form-certificate">
+      <label>Japanese Certificate:</label>
+      <input class="form-control" formControlName="certificate" type="text" required>
+      <span class="invalid" [ngClass]="{'hide': certificate.valid}">*</span>
+    </div>
+    <button (click)="onSubmit()" type="submit">Submit</button>
   </form>
 </div>
   
