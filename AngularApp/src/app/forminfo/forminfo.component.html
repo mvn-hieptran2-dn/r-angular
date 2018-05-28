@@ -1,34 +1,33 @@
 <div class="container">
   <form [formGroup]="FormModel" class="forminfo" >
     <div class="form-group">
-      <label>Name: </label>
-      <input class="form-control" type="text" formControlName="name">
-      <span class="hide invalid" [ngClass]="{'show': name.invalid}">*</span>
+      <label>Name: <span class="hide invalid" [ngClass]="{'show': name.invalid}">*</span></label>
+      <input class="form-control" type="text" placeholder="Full Name" formControlName="name">
+      <p class="error-msg">Please enter a name.</p>
     </div>
     <div class="form-group">
       <label>Birthday: </label>
       <input class="form-control" type="date">
     </div>
     <div class="form-group">
-      <label>Gender:</label>
+      <label>Gender: <span class="hide invalid" [ngClass]="{'show': gender.invalid}">*</span></label>
       <input type="radio" name="gender" id="" value="Male" formControlName="gender"> Male
       <input type="radio" name="gender" id="" value="FeMale" formControlName="gender"> FeMale
-      <span class="hide invalid" [ngClass]="{'show': gender.invalid}">*</span>
     </div>
     <div class="form-group">
-      <label>Email: </label>
-      <input class="form-control" type="text" name="email" formControlName="email">
-      <span class="hide invalid" [ngClass]="{'show': email.invalid}">*</span>
+      <label>Email: <span class="hide invalid" [ngClass]="{'show': email.invalid}">*</span></label>
+      <input class="form-control" type="text" name="email" placeholder="email@gmail.com" formControlName="email">
+      <p class="error-msg">Please enter enough information in the form by ex: email@gmail.com</p>
     </div>
     <div class="form-group">
-      <label>Code: </label>
-      <input class="form-control" type="text" formControlName="code">
-      <span class="hide invalid" [ngClass]="{'show': code.invalid}">*</span>
+      <label>Code: <span class="hide invalid" [ngClass]="{'show': code.invalid}">*</span></label>
+      <input class="form-control" type="text" placeholder="ATxxx" formControlName="code">
+      <p class="error-msg">Please enter enough information in the form by ex: ATxxx</p>
     </div>
     <div class="form-group">
-      <label>Team: </label>
+      <label>Team: <span class="hide invalid" [ngClass]="{'show': team.invalid}">*</span></label>
       <select id="select-team" class="form-control" formControlName="team">
-        <option value="0"></option>
+        <option value="">Select your team</option>
         <option value="1">FE</option>
         <option value="2">Ruby</option>
         <option value="3">PHP</option>
@@ -36,22 +35,26 @@
         <option value="5">Androi</option>
         <option value="6">IOS</option>
       </select>
-      <span class="hide invalid" [ngClass]="{'show': team.invalid}">*</span>
     </div>
     <div class="form-group">
-      <label>Skill: </label>
-      <input class="form-control" type="text" formControlName="skill">
-      <span class="hide invalid" [ngClass]="{'show': skill.invalid}">*</span>
+      <label>Skill:</label>
+      <button class="btn_skill add cur-pointer" (click)="addNewSkill()">+</button>
+      <div class="form_item" formArrayName="arraySkills" *ngFor="let skill of FormModel.get('arraySkills').controls; let i = index;">
+        <div [formGroupName]="i">
+          <label class="label">Skill {{ i + 1 }}: <span class="hide invalid" [ngClass]="{'show': skill.invalid}">*</span></label>
+          <input class="form-control" type="text" placeholder="Skill" formControlName="skill">
+          <button class="btn_skill remove cur-pointer" (click)="removeSkill(skill)">-</button>
+        </div>
+      </div>
     </div>
     <div class="form-group">
-      <label>Citizen: </label>
+      <label>Citizen: <span class="invalid" [ngClass]="{'hide': citizen.valid}">*</span></label>
       Viet Nam:<input type="radio" name="citizen" value="VN" (change)="showCertificate('VN')" formControlName="citizen">
       Japan:<input type="radio" name="citizen" value="JP" (change)="showCertificate('JP')" formControlName="citizen">
-      <span class="invalid" [ngClass]="{'hide': citizen.valid}">*</span>
     </div>
     <div id="form-certificate">
-      <label>Japanese Certificate:</label>
-      <input class="form-control" formControlName="certificate" type="text" required>
+      <label>Japanese Certificate: </label>
+      <input class="form-control" placeholder="N5 - N1" formControlName="certificate" type="text" required>
       <span class="invalid" [ngClass]="{'hide': certificate.valid}">*</span>
     </div>
     <button (click)="onSubmit()" type="submit">Submit</button>

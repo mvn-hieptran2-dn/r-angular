@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import { FormGroup, FormControlName, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControlName, Validators, FormBuilder,FormArray  } from '@angular/forms';
 import { ValidateCode, ValidateEmail } from '../validators/allvalidator';
 import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 
@@ -11,6 +11,7 @@ import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 export class FormInforComponent {
   FormModel: any;
   CertificateDiv: any;
+  arraySkills: FormArray;
 
   constructor(private fb: FormBuilder) {
     this.FormModel = this.fb.group({
@@ -19,10 +20,24 @@ export class FormInforComponent {
       team: ['', Validators.required],
       email: ['', [Validators.required, ValidateEmail]],
       code: ['', [Validators.required, ValidateCode]],
-      skill: ['', Validators.required],
+      arraySkills: this.fb.array([this.createSkillGroup()]),
       citizen: ['', Validators.required],
       certificate: [''],
     })
+  }
+
+  createSkillGroup(): FormGroup {
+    return this.fb.group({
+      skill: ['', Validators.required]
+    });
+  }
+  addNewSkill() {
+    this.arraySkills = this.FormModel.get('arraySkills') as FormArray;
+    this.arraySkills.push(this.createSkillGroup());
+  }
+  removeSkill(skill) {
+    this.arraySkills = this.FormModel.get('arraySkills') as FormArray;
+    this.arraySkills.removeAt(skill);
   }
 
   showCertificate(event: string) {
