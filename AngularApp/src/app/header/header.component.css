@@ -1,0 +1,18 @@
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.page-header {
+  height: 70px;
+  line-height: 70px;
+  text-align: center;
+  background-color: #a52a2a;
+  color: #fff;
+}
+
+.page-header h1 {
+  font-size: 35px;
+}
